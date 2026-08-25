@@ -47,10 +47,15 @@ Fixes:
    PY
    ```
 
-2. Install Ninja and a CUDA toolkit compatible with the installed PyTorch:
+2. Install a Mooncake wheel built for the installed PyTorch/CUDA combination,
+   or rebuild Mooncake from source with EP/PG enabled.
+
+   For a source build, install Ninja and a CUDA toolkit compatible with the
+   installed PyTorch, then run:
 
    ```bash
-   python -m pip install ninja
+   cmake -S . -B build -G Ninja -DWITH_EP=ON
+   cmake --build build
    ```
 
    On a headless CUDA host, set `TORCH_CUDA_ARCH_LIST` to an architecture
